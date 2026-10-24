@@ -1,0 +1,24 @@
+<header class="cabecera">
+  <div class="cabecera-fila">
+    <a class="marca" href="${ctx}/inicio" aria-label="Parada, inicio">
+      <span class="marca-sello">P</span><span class="marca-texto">Parada</span>
+    </a>
+    <form class="buscador" action="${ctx}/catalogo" method="get" role="search">
+      <input type="search" name="q" placeholder="Busca café, snacks, hot dogs…" value="<c:out value='${q}'/>" aria-label="Buscar productos">
+      <button type="submit">Buscar</button>
+    </form>
+    <nav class="acciones" aria-label="Cuenta y carrito">
+      <c:choose>
+        <c:when test="${empty sessionScope.usuarioEmail}">
+          <a href="${ctx}/login">Entrar</a>
+        </c:when>
+        <c:otherwise>
+          <a href="${ctx}/perfil"><c:out value="${sessionScope.usuarioNombre}"/></a>
+        </c:otherwise>
+      </c:choose>
+      <a class="carrito-btn" href="${ctx}/carrito" aria-label="Carrito">
+        Carrito <span id="cart-count" class="badge">${empty sessionScope.carrito ? 0 : sessionScope.carrito.cantidadTotal}</span>
+      </a>
+    </nav>
+  </div>
+</header>

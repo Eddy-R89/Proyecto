@@ -1,0 +1,14 @@
+<footer class="pie">
+  <div class="contenedor pie-fila">
+    <strong>Parada</strong>
+    <nav aria-label="Pie de página">
+      <a href="${ctx}/catalogo">Catálogo</a>
+      <a href="${ctx}/contacto">Contacto</a>
+      <a href="${ctx}/carrito">Carrito</a>
+    </nav>
+  </div>
+</footer>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="${ctx}/assets/js/app.js"></script>
+</body>
+</html>

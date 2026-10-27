@@ -1,6 +1,6 @@
 # Parada – Sistema de ventas de productos alimenticios (Java Web)
 
-Proyecto final. JSP + Servlets + JSTL, Maven, Tomcat 10.1.x, Java 11+.
+Proyecto final. Servlets (el HTML se genera dentro de cada Servlet), Maven, Tomcat 10.1.x, Java 11+.
 
 ## Ejecutar en NetBeans
 1. File → Open Project → carpeta `parada-web`.
@@ -11,7 +11,7 @@ Proyecto final. JSP + Servlets + JSTL, Maven, Tomcat 10.1.x, Java 11+.
 ## Quién toca qué
 | Parte | Ruta | Responsable |
 |---|---|---|
-| Frontend (vistas, CSS, JS) | `src/main/webapp/WEB-INF/views`, `src/main/webapp/assets` | Integrante 1 |
+| Frontend (HTML en los servlets, CSS, JS, imágenes) | `src/main/java/com/parada/web` (+ `Plantilla.java`), `src/main/webapp/assets` | Integrante 1 |
 | Servlets / lógica | `src/main/java/com/parada/web` | Integrante 2 |
 | Datos y DAO (reemplazar `CatalogoMock`) | `src/main/java/com/parada/data` | Integrante 3 |
 | Seguridad (hash, SQL seguro, pago, HTTPS) | Servlets de login/registro/checkout | Integrante 4 |

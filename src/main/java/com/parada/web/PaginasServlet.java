@@ -8,10 +8,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /** Páginas sencillas: perfil, contacto y confirmación del pedido. */
 @WebServlet(urlPatterns = {"/perfil", "/contacto", "/confirmacion"})
 public class PaginasServlet extends HttpServlet {
+    private static final Logger registro = Logger.getLogger(PaginasServlet.class.getName());
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

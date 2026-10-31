@@ -10,10 +10,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /** Finalizar pedido: datos del cliente, entrega y forma de pago. */
 @WebServlet(urlPatterns = {"/checkout"})
 public class CheckoutServlet extends HttpServlet {
+    private static final Logger registro = Logger.getLogger(CheckoutServlet.class.getName());
 
     private void mostrar(HttpServletRequest request, HttpServletResponse response, String error)
             throws IOException {

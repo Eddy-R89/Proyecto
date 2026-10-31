@@ -1,6 +1,6 @@
 package com.parada.web;
 
-import com.parada.data.CatalogoMock;
+import com.parada.data.ConsultaProducto;
 import com.parada.model.Carrito;
 import com.parada.model.ItemCarrito;
 import com.parada.model.Producto;
@@ -11,10 +11,15 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /** Carrito de compras (en sesión). GET muestra el carrito, POST ejecuta una acción. */
 @WebServlet(urlPatterns = {"/carrito"})
 public class CarritoServlet extends HttpServlet {
+    private static final Logger registro = Logger.getLogger(CarritoServlet.class.getName());
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -93,7 +98,7 @@ public class CarritoServlet extends HttpServlet {
 
         switch (accion) {
             case "agregar":
-                Producto p = CatalogoMock.porId(id);
+                Producto p = ConsultaProducto.porId(id);
                 if (p != null) carrito.agregar(p, Math.max(1, cantidad));
                 break;
             case "cambiar":

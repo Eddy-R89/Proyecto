@@ -1,6 +1,6 @@
 package com.parada.web;
 
-import com.parada.data.CatalogoMock;
+import com.parada.data.ConsultaProducto;
 import com.parada.model.Producto;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,10 +9,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /** Página de inicio: banner, categorías y productos destacados. */
 @WebServlet(urlPatterns = {"/inicio"})
 public class HomeServlet extends HttpServlet {
+    private static final Logger registro = Logger.getLogger(HomeServlet.class.getName());
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -38,7 +42,7 @@ public class HomeServlet extends HttpServlet {
             out.println("<section class='contenedor'>");
             out.println("<h2>Categorías</h2>");
             out.println("<div class='cats'>");
-            for (String cat : CatalogoMock.categorias()) {
+            for (String cat : ConsultaProducto.categorias()) {
                 out.println("<a class='cat' href='" + ctx + "/catalogo?cat=" + Plantilla.url(cat) + "'>" + Plantilla.esc(cat) + "</a>");
             }
             out.println("</div>");
@@ -47,7 +51,7 @@ public class HomeServlet extends HttpServlet {
             out.println("<section class='contenedor'>");
             out.println("<h2>Lo más pedido</h2>");
             out.println("<div class='grilla'>");
-            for (Producto p : CatalogoMock.todos().subList(0, 8)) {
+            for (Producto p : ConsultaProducto.todos().subList(0, Math.min(8, ConsultaProducto.todos().size()))) {
                 Plantilla.tarjeta(out, ctx, p);
             }
             out.println("</div>");

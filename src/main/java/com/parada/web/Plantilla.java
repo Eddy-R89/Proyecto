@@ -7,6 +7,9 @@ import jakarta.servlet.http.HttpSession;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.io.StringWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Partes de HTML que se repiten en todas las páginas: cabecera, pie y tarjeta de producto.
@@ -99,6 +102,7 @@ final class Plantilla {
     /** Si el valor tiene punto (Cafe.png) es una imagen en assets/img; si no, es un emoji. */
     static String imagen(String ctx, Producto p, String claseImg, String claseEmoji, boolean decorativa) {
         String v = p.getEmoji();
+        
         if (v != null && v.contains(".")) {
             String alt = decorativa ? "" : esc(p.getNombre());
             return "<img class='" + claseImg + "' src='" + ctx + "/assets/img/" + esc(v) + "' alt='" + alt + "' loading='lazy'>";

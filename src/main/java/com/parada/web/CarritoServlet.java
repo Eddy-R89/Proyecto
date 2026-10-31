@@ -11,10 +11,15 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /** Carrito de compras (en sesión). GET muestra el carrito, POST ejecuta una acción. */
 @WebServlet(urlPatterns = {"/carrito"})
 public class CarritoServlet extends HttpServlet {
+    private static final Logger registro = Logger.getLogger(CarritoServlet.class.getName());
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

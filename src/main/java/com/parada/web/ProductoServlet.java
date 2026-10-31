@@ -9,10 +9,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /** Detalle de un producto: /producto?id=1 */
 @WebServlet(urlPatterns = {"/producto"})
 public class ProductoServlet extends HttpServlet {
+    private static final Logger registro = Logger.getLogger(ProductoServlet.class.getName());
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

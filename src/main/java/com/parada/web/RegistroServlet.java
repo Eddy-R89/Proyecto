@@ -7,10 +7,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /** Registro de usuarios nuevos. */
 @WebServlet(urlPatterns = {"/registro"})
 public class RegistroServlet extends HttpServlet {
+    private static final Logger registro = Logger.getLogger(RegistroServlet.class.getName());
 
     private void mostrar(HttpServletRequest request, HttpServletResponse response, String error)
             throws IOException {

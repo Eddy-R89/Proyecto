@@ -10,10 +10,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.io.StringWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /** Catálogo con filtro por categoría (?cat=) y búsqueda (?q=). */
 @WebServlet(urlPatterns = {"/catalogo"})
 public class CatalogoServlet extends HttpServlet {
+    private static final Logger registro = Logger.getLogger(CatalogoServlet.class.getName());
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

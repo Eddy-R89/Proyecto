@@ -1,6 +1,6 @@
 package com.parada.web;
 
-import com.parada.data.CatalogoMock;
+import com.parada.data.ConsultaProducto;
 import com.parada.model.Carrito;
 import com.parada.model.ItemCarrito;
 import com.parada.model.Producto;
@@ -98,7 +98,7 @@ public class CarritoServlet extends HttpServlet {
 
         switch (accion) {
             case "agregar":
-                Producto p = CatalogoMock.porId(id);
+                Producto p = ConsultaProducto.porId(id);
                 if (p != null) carrito.agregar(p, Math.max(1, cantidad));
                 break;
             case "cambiar":

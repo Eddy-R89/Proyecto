@@ -1,6 +1,6 @@
 package com.parada.web;
 
-import com.parada.data.CatalogoMock;
+import com.parada.data.ConsultaProducto;
 import com.parada.model.Producto;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -22,7 +22,7 @@ public class ProductoServlet extends HttpServlet {
             throws ServletException, IOException {
         Producto p = null;
         try {
-            p = CatalogoMock.porId(Integer.parseInt(request.getParameter("id")));
+            p = ConsultaProducto.porId(Integer.parseInt(request.getParameter("id")));
         } catch (NumberFormatException ignorado) {
         }
         if (p == null) {
@@ -57,7 +57,7 @@ public class ProductoServlet extends HttpServlet {
             out.println("<h2>También en " + Plantilla.esc(p.getCategoria()) + "</h2>");
             out.println("<div class='grilla'>");
             int mostrados = 0;
-            for (Producto otro : CatalogoMock.filtrar(p.getCategoria(), null)) {
+            for (Producto otro : ConsultaProducto.filtrar(p.getCategoria(), null)) {
                 if (otro.getId() != p.getId() && mostrados < 4) {
                     Plantilla.tarjeta(out, ctx, otro);
                     mostrados++;

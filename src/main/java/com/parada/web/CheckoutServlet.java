@@ -13,6 +13,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import com.parada.data.ConsultaDB;
 
 /** Finalizar pedido: datos del cliente, entrega y forma de pago. */
 @WebServlet(urlPatterns = {"/checkout"})
@@ -112,7 +113,9 @@ public class CheckoutServlet extends HttpServlet {
 
         // TODO Integrante 3: guardar pedido + detalle con PedidoDAO (transacción).
         // TODO Integrante 4: pasarela de pago de terceros y validación/saneo de datos.
-        sesion.setAttribute("pedidoNumero", "PED-" + (System.currentTimeMillis() % 100000));
+        
+        String numero = ConsultaDB.guardar(nombre,telefono, entrega, direccion, pago, carrito);
+        sesion.setAttribute("pedidoNumero", numero);
         sesion.setAttribute("pedidoTotal", carrito.getTotalTexto());
         sesion.setAttribute("pedidoEntrega", "domicilio".equals(entrega) ? "A domicilio" : "Recoger en tienda");
         carrito.vaciar();
